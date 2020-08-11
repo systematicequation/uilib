@@ -939,7 +939,7 @@ local defaults; do
             end
 
             return {
-                ArrayRefresh = reload;
+                Refresh = reload;
             }
         end
     end
