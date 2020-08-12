@@ -4,7 +4,7 @@ local defaults; do
         local mouse        = game:GetService("Players").LocalPlayer:GetMouse();
         local inputService = game:GetService('UserInputService');
         local heartbeat    = game:GetService("RunService").Heartbeat;
-        
+        -- // credits to Ririchi / Inori for this cute drag function :)
         function dragger.new(frame)
             local s, event = pcall(function()
                 return frame.MouseEnter
@@ -16,13 +16,11 @@ local defaults; do
                 event:connect(function()
                     local input = frame.InputBegan:connect(function(key)
                         if key.UserInputType == Enum.UserInputType.MouseButton1 then
-                           local dragStart = key.Position
-						   -- local objectPosition = Vector2.new(mouse.X - frame.AbsolutePosition.X, mouse.Y - frame.AbsolutePosition.Y);
-                            while heartbeat:Wait() and inputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) do
+                            local objectPosition = Vector2.new(mouse.X - frame.AbsolutePosition.X, mouse.Y - frame.AbsolutePosition.Y);
+                            while heartbeat:wait() and inputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) do
                                 pcall(function()
-                                    -- frame:TweenPosition(UDim2.new(0, mouse.X - objectPosition.X, 0, mouse.Y - objectPosition.Y), 'Out', 'Linear', 0.1, true);
-									frame:TweenPosition(UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y), 'Out', 'Linear', 0.1, true)
-								end)
+                                    frame:TweenPosition(UDim2.new(0, mouse.X - objectPosition.X, 0, mouse.Y - objectPosition.Y), 'Out', 'Linear', 0.1, true);
+                                end)
                             end
                         end
                     end)
